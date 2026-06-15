@@ -89,7 +89,11 @@ io.on('connection', (socket) => {
 app.use(errorHandler);
 
 // Define PORT and run the server
-const PORT = process.env.PORT || 5001;
-server.listen(PORT, () => {
-  console.log(`EcoMeal Backend Server running in production-ready mode on port ${PORT}`);
-});
+if (require.main === module) {
+  const PORT = process.env.PORT || 5001;
+  server.listen(PORT, () => {
+    console.log(`EcoMeal Backend Server running in production-ready mode on port ${PORT}`);
+  });
+}
+
+module.exports = app;

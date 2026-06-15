@@ -89,7 +89,7 @@ export const InventoryProvider = ({ children }) => {
     }
 
     // Connect to WebSocket server in backend
-    const socket = io('http://localhost:5001');
+    const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5001');
     socketRef.current = socket;
 
     socket.on('connect', () => {
